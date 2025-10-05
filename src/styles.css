@@ -1,0 +1,400 @@
+:root {
+  font-family: 'Quicksand', 'Comfortaa', system-ui, sans-serif;
+  color: #f6f9ff;
+  background: radial-gradient(circle at top, #3a1f4b 0%, #130815 45%, #050308 100%);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 80px;
+  gap: 24px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(340px, 1.1fr) minmax(300px, 0.9fr);
+  gap: 24px;
+}
+
+.layout__left,
+.layout__right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, rgba(255, 126, 95, 0.2), rgba(255, 224, 178, 0.12));
+  border: 1px solid rgba(255, 210, 200, 0.2);
+  box-shadow: 0 20px 40px rgba(10, 4, 20, 0.4);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.hero-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-card__header h1 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 2.25rem;
+  margin: 0;
+}
+
+.hero-card__header p {
+  margin: 0;
+  opacity: 0.7;
+}
+
+.hero-card__resonance {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-card__resonance__details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.portal-active {
+  color: #ffd369;
+}
+
+.hero-card__stats {
+  display: grid;
+  gap: 8px;
+}
+
+.hero-card__xp {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.tortie-avatar {
+  position: relative;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255, 170, 120, 0.8), rgba(90, 40, 110, 0.9));
+  display: grid;
+  place-items: center;
+}
+
+.tortie-avatar__shell {
+  width: 70%;
+  height: 70%;
+  border-radius: 50% 50% 45% 45%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 190, 120, 0.9), rgba(90, 35, 120, 0.85));
+  position: relative;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 18px rgba(255, 150, 80, 0.5);
+}
+
+.tortie-avatar__shell__pattern {
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 140, 80, 0.5) 0deg 30deg,
+    rgba(70, 20, 80, 0.8) 30deg 60deg
+  );
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+.tortie-avatar__eyes {
+  position: absolute;
+  bottom: 25%;
+  display: flex;
+  gap: 16px;
+}
+
+.tortie-avatar__eyes div {
+  width: 18px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #1c0a19 70%);
+}
+
+.panel {
+  background: rgba(20, 10, 30, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 12px 32px rgba(6, 3, 14, 0.4);
+}
+
+.panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel__header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.panel__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.action-button {
+  background: linear-gradient(135deg, rgba(255, 137, 102, 0.8), rgba(255, 201, 120, 0.7));
+  border: none;
+  border-radius: 18px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2b0f26;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 16px rgba(255, 140, 100, 0.25);
+}
+
+.action-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.action-button:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.ritual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.incantations {
+  display: grid;
+  gap: 10px;
+}
+
+.incantation {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 190, 140, 0.3);
+  border-radius: 16px;
+  padding: 10px 12px;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.incantation strong {
+  font-family: 'Comfortaa', cursive;
+  letter-spacing: 0.04em;
+}
+
+.incantation:hover {
+  background: rgba(255, 204, 160, 0.15);
+  transform: translateY(-1px);
+}
+
+.vent-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.vent-control input[type='range'] {
+  width: 140px;
+}
+
+.inventory-list,
+.objective-list,
+.achievement-list,
+.recipe-list,
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inventory-item {
+  text-transform: capitalize;
+}
+
+.inventory-list li,
+.objective-list li,
+.achievement-list li,
+.recipe-list li {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.objective-list li {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.objective-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+.objective-progress__bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.objective-progress__bar div {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+}
+
+.achievement-list li {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.recipe-list li {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recipe-list .action-button {
+  align-self: flex-end;
+}
+
+.recipe-inputs {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.achievement-list li.achieved {
+  border: 1px solid rgba(255, 219, 120, 0.5);
+  box-shadow: 0 0 16px rgba(255, 220, 140, 0.3);
+}
+
+.empty {
+  opacity: 0.7;
+  font-size: 0.9rem;
+}
+
+.log-list li {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+}
+
+.clear-logs {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.lore-ribbon {
+  align-self: center;
+  max-width: 780px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.5), rgba(244, 114, 182, 0.4));
+  border-radius: 18px;
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(90, 50, 120, 0.3);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 8px 14px;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-card__resonance__details {
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 24px 16px 72px;
+  }
+
+  .ritual-grid {
+    grid-template-columns: 1fr;
+  }
+}
